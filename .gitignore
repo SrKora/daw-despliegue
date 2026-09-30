@@ -1,0 +1,15 @@
+# --- Compilación Maven ---
+target/
+
+# --- Ficheros de clases compiladas ---
+*.class
+
+# --- Variables de entorno / secretos ---
+.env
+.env
+
+# VS Code
+.vscode/
+
+# --- Datos generados localmente durante pruebas ---
+escaparate/uploads/
