@@ -38,9 +38,10 @@ Lo comprobé con `git check-ignore -v` y esos ficheros de prueba quedaron bien i
 
 ## Evidencias
 
-![Evidencia 1: git check-ignore](img/evidencia-1png)
+![Evidencia 1: git check-ignore](img/evidencia-1-check-ignore.png)
 
-![Evidencia 2: historial con el error y su corrección](img/evidencia-2.png)
+![Evidencia 2: historial con el error y su corrección](img/evidencia-2-historial-revert.png)
 
-![Evidencia 3: commit arreglado](img/evidencia.png)
+![Evidencia 3: Pull Request](img/evidencia-3-pull-request.png)
 
+![Evidencia 4: etiqueta v0.1.0](img/evidencia-4-tag.png)
