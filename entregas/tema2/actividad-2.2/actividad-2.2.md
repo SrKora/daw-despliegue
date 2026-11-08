@@ -53,3 +53,32 @@ uid=100(escaparate) gid=101(escaparate) groups=101(escaparate)
   'printf "%s\n" "$APP_STORAGE_PATH"; test -w "$APP_STORAGE_PATH" && echo "writable"'
 /app/uploads
 writable
+
+
+### Tabla de comparar datos
+
+|            | Construcción inicial | Tras modificar código | SIZE final |
+|------------|----------------------|-----------------------|------------|
+| Ingenua    | 0m58s                | 1m20s                 | 1.06GB     |
+| Optimizada | 1m22s                | 1m37s                 | 1.07GB     |
+
+
+**1. ¿Qué trabajo reutilizó la imagen optimizada que la ingenua tuvo que repetir?**
+	El COPY, cualquier cambio obliga a descargar todo de nuevo
+
+**2. ¿Qué contiene la imagen ingenua que la imagen final no necesita?**
+	El JDK completo
+	Las dependencias descargadas
+	El codigo fuente
+
+**3. ¿Qué mejora explica principalmente la reducción del tiempo de reconstrucción?**
+	Copiar las dependencias y luego descargarlas, esto varia si el codigo cambia ya 
+	que las dependencias seguiran en cache
+
+**4. ¿Qué mejora explica principalmente la reducción de tamaño?**
+	Usar dos etapas.
+
+**5. ¿Qué decisiones mejoran la seguridad aunque no reduzcan necesariamente el tiempo de build?**
+	Usar un usuario sin privilegios
+	Excluir el `.env` en el `.dockerignore` 
+	Reducir los permisos de escritura
