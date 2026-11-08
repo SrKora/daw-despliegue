@@ -1,0 +1,205 @@
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  259.6kB
+Step 1/14 : FROM maven:3.9.16-eclipse-temurin-21-alpine AS build
+ ---> 308cba8b638e
+Step 2/14 : WORKDIR /app
+ ---> Using cache
+ ---> 9a58c4a8ba24
+Step 3/14 : COPY pom.xml .
+ ---> Using cache
+ ---> 334743c9d06e
+Step 4/14 : RUN mvn -B dependency:go-offline
+ ---> Using cache
+ ---> 46ba0725bd2d
+Step 5/14 : COPY src ./src
+ ---> 6f0df7b458ba
+Step 6/14 : RUN mvn -B package
+ ---> Running in 6ef5ff6178ce
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< es.escaparate:escaparate >----------------------
+[INFO] Building Escaparate 2.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (jacoco-prepare-agent) @ escaparate ---
+[INFO] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/app/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ escaparate ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 9 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ escaparate ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 25 source files with javac [debug parameters release 21] to target/classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ escaparate ---
+[INFO] Copying 2 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ escaparate ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 6 source files with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ escaparate ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.6/surefire-junit-platform-3.5.6.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.6/surefire-junit-platform-3.5.6.pom (5.2 kB at 14 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.5.6/surefire-providers-3.5.6.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.5.6/surefire-providers-3.5.6.pom (2.5 kB at 64 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.6/common-java5-3.5.6.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.6/common-java5-3.5.6.pom (3.1 kB at 71 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.12.2/junit-platform-engine-1.12.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.12.2/junit-platform-engine-1.12.2.pom (3.2 kB at 71 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.12.2/junit-platform-commons-1.12.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.12.2/junit-platform-commons-1.12.2.pom (2.8 kB at 64 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.2/junit-platform-launcher-1.12.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.2/junit-platform-launcher-1.12.2.pom (3.0 kB at 66 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.6/surefire-junit-platform-3.5.6.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.6/surefire-junit-platform-3.5.6.jar (35 kB at 739 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.6/common-java5-3.5.6.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.12.2/junit-platform-engine-1.12.2.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.12.2/junit-platform-commons-1.12.2.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.2/junit-platform-launcher-1.12.2.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.12.2/junit-platform-engine-1.12.2.jar (256 kB at 3.1 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.6/common-java5-3.5.6.jar (18 kB at 178 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.12.2/junit-platform-commons-1.12.2.jar (152 kB at 681 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.2/junit-platform-launcher-1.12.2.jar (208 kB at 681 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/6.0.3/junit-platform-launcher-6.0.3.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/6.0.3/junit-platform-launcher-6.0.3.pom (3.2 kB at 43 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/6.0.3/junit-platform-launcher-6.0.3.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/6.0.3/junit-platform-launcher-6.0.3.jar (246 kB at 2.2 MB/s)
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running es.escaparate.EscaparateApplicationTests
+17:47:01.616 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [es.escaparate.EscaparateApplicationTests]: EscaparateApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17:47:01.816 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration es.escaparate.EscaparateApplication for test class es.escaparate.EscaparateApplicationTests
+17:47:02.019 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [es.escaparate.EscaparateApplicationTests]: EscaparateApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17:47:02.021 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration es.escaparate.EscaparateApplication for test class es.escaparate.EscaparateApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.0)
+
+2026-11-08T17:47:02.656Z  INFO 78 --- [           main] e.escaparate.EscaparateApplicationTests  : Starting EscaparateApplicationTests using Java 21.0.12.1 with PID 78 (started by root in /app)
+2026-11-08T17:47:02.658Z  INFO 78 --- [           main] e.escaparate.EscaparateApplicationTests  : No active profile set, falling back to 1 default profile: "default"
+2026-11-08T17:47:03.539Z  INFO 78 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-08T17:47:03.617Z  INFO 78 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 58 ms. Found 1 JPA repository interface.
+2026-11-08T17:47:04.186Z  INFO 78 --- [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-11-08T17:47:04.290Z  INFO 78 --- [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.1.Final
+2026-11-08T17:47:04.954Z  INFO 78 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-08T17:47:05.023Z  INFO 78 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-08T17:47:05.436Z  INFO 78 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:escaparate user=SA
+2026-11-08T17:47:05.439Z  INFO 78 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-08T17:47:05.557Z  INFO 78 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:escaparate]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: ESCAPARATE/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-08T17:47:06.871Z  INFO 78 --- [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-08T17:47:06.930Z  INFO 78 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-08T17:47:07.067Z  INFO 78 --- [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-08T17:47:07.489Z  INFO 78 --- [           main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-11-08T17:47:08.047Z  INFO 78 --- [           main] e.escaparate.EscaparateApplicationTests  : Started EscaparateApplicationTests in 5.906 seconds (process running for 7.869)
+[91mMockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+[0m[91mOpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+[0m[91mWARNING: A Java agent has been loaded dynamically (/root/.m2/repository/net/bytebuddy/byte-buddy-agent/1.18.10/byte-buddy-agent-1.18.10.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+[0m[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.244 s -- in es.escaparate.EscaparateApplicationTests
+[INFO] Running es.escaparate.producto.ProductoServiceTests
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.712 s -- in es.escaparate.producto.ProductoServiceTests
+[INFO] Running es.escaparate.producto.ProductoControllerTests
+2026-11-08T17:47:09.412Z  INFO 78 --- [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-11-08T17:47:09.412Z  INFO 78 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-08T17:47:09.415Z  INFO 78 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-11-08T17:47:09.893Z  INFO 78 --- [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-11-08T17:47:09.894Z  INFO 78 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-08T17:47:09.895Z  INFO 78 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-11-08T17:47:09.937Z  INFO 78 --- [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-11-08T17:47:09.937Z  INFO 78 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-08T17:47:09.938Z  INFO 78 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-11-08T17:47:09.974Z  INFO 78 --- [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-11-08T17:47:09.975Z  INFO 78 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-08T17:47:09.975Z  INFO 78 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.772 s -- in es.escaparate.producto.ProductoControllerTests
+[INFO] Running es.escaparate.almacenamiento.FileSystemStorageTests
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.042 s -- in es.escaparate.almacenamiento.FileSystemStorageTests
+[INFO] Running es.escaparate.InfraestructuraTests
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.100 s -- in es.escaparate.InfraestructuraTests
+[INFO] Running es.escaparate.infraestructura.InfraestructuraAdicionalTests
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.103 s -- in es.escaparate.infraestructura.InfraestructuraAdicionalTests
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- resources:3.5.0:copy-resources (frontend-estatico-comun) @ escaparate ---
+[INFO] Copying 8 resources from src/main/resources/static to target/frontend-static
+[INFO] 
+[INFO] --- resources:3.5.0:copy-resources (frontend-estatico-configuracion) @ escaparate ---
+[INFO] Copying 4 resources from src/main/frontend-static to target/frontend-static
+[INFO] 
+[INFO] --- war:3.5.1:war (default-war) @ escaparate ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [escaparate] in [/app/target/escaparate]
+[INFO] Processing war project
+[INFO] Building war: /app/target/escaparate.war
+[INFO] 
+[INFO] --- spring-boot:4.1.0:repackage (repackage) @ escaparate ---
+[INFO] Replacing main artifact /app/target/escaparate.war with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /app/target/escaparate.war.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  15.991 s
+[INFO] Finished at: 2026-11-08T17:47:11Z
+[INFO] ------------------------------------------------------------------------
+ ---> Removed intermediate container 6ef5ff6178ce
+ ---> 340e47baebdf
+Step 7/14 : FROM eclipse-temurin:21.0.12_8-jre-alpine-3.24
+ ---> 1a29e1fe337e
+Step 8/14 : RUN addgroup -S escaparate  && adduser -S -G escaparate -H -s /sbin/nologin escaparate  && mkdir -p /app/uploads  && chown escaparate:escaparate /app/uploads
+ ---> Using cache
+ ---> 86bd6b988704
+Step 9/14 : WORKDIR /app
+ ---> Using cache
+ ---> 2e264e3c7c5a
+Step 10/14 : COPY --from=build /app/target/escaparate.war app.war
+ ---> def77b5d38d1
+Step 11/14 : ENV APP_STORAGE_PATH=/app/uploads
+ ---> Running in 93122a12e0ee
+ ---> Removed intermediate container 93122a12e0ee
+ ---> ddac02604368
+Step 12/14 : USER escaparate
+ ---> Running in 8475ec5e13f0
+ ---> Removed intermediate container 8475ec5e13f0
+ ---> d86136e3b28a
+Step 13/14 : EXPOSE 8080
+ ---> Running in 284c84fd0eda
+ ---> Removed intermediate container 284c84fd0eda
+ ---> 4c2bc2366f5d
+Step 14/14 : ENTRYPOINT ["java", "-jar", "/app/app.war"]
+ ---> Running in 129fa4abe46a
+ ---> Removed intermediate container 129fa4abe46a
+ ---> 7b089185cfb9
+Successfully built 7b089185cfb9
+Successfully tagged escaparate:optimizada
