@@ -6,10 +6,14 @@ target/
 
 # --- Variables de entorno / secretos ---
 .env
-.env
+.env.*
+!.env.example
+/practicas/compose/.env
+/practicas/compose/secrets/bd_clave.txt
 
 # VS Code
 .vscode/
 
 # --- Datos generados localmente durante pruebas ---
 escaparate/uploads/
+
