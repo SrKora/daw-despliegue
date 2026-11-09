@@ -1,0 +1,11 @@
+FROM maven:3.9.16-eclipse-temurin-21-alpine
+
+WORKDIR /app
+
+COPY . .
+
+RUN mvn -B clean package
+
+EXPOSE 8080
+
+CMD ["sh", "-c", "exec java -jar target/*.war"]
