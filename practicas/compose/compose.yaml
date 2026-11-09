@@ -1,0 +1,44 @@
+services:
+  bd:
+    image: ${IMAGEN_BD:?define IMAGEN_BD en .env}
+    environment:
+      POSTGRES_USER: ${BD_USUARIO:?define BD_USUARIO en .env}
+      POSTGRES_DB: ${BD_NOMBRE:?define BD_NOMBRE en .env}
+      POSTGRES_PASSWORD_FILE: /run/secrets/bd_clave
+    secrets:
+      - bd_clave
+    volumes:
+      - datos-bd:/var/lib/postgresql
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -h 127.0.0.1 -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"
+      interval: 2s
+      timeout: 2s
+      retries: 30
+      start_period: 10s
+
+
+  app:
+    image: ${IMAGEN_APP:?define IMAGEN_APP en .env}
+    ports:
+      - "8080:8080"
+    environment:
+      DB_HOST: bd
+      DB_PORT: "5432"
+      DB_NAME: ${BD_NOMBRE:?define BD_NOMBRE en .env}
+      DB_USER: ${BD_USUARIO:?define BD_USUARIO en .env}
+      SPRING_CONFIG_IMPORT: "configtree:/run/secrets/"
+    secrets:
+      - source: bd_clave
+        target: spring.datasource.password
+    depends_on:
+      bd:
+        condition: service_healthy
+
+volumes:
+  datos-bd:
+
+secrets:
+  bd_clave:
+    file: ./secrets/bd_clave.txt
