@@ -6,7 +6,11 @@ target/
 
 # --- Variables de entorno / secretos ---
 .env
-.env
+.env.*
+!.env.example
+/practicas/compose/.env
+/practicas/compose/secrets/bd_clave.txt
+*:Zone.Identifier
 
 # VS Code
 .vscode/
